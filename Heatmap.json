@@ -1,0 +1,43 @@
+{
+  "$schema": "https://vega.github.io/schema/vega-lite/v5.json",
+  "description": "Heatmap showing correlations between key nutritional metrics.",
+  "data": {
+    "url": "starbucks_processed.csv"
+  },
+  "transform": [
+    {
+      "calculate": "datum.total_fat_g / datum.calories",
+      "as": "fat_to_calorie_ratio"
+    }
+  ],
+  "mark": "rect",
+  "encoding": {
+    "x": {
+      "field": "sugar_g",
+      "type": "quantitative",
+      "bin": true,
+      "title": "Sugar (g)"
+    },
+    "y": {
+      "field": "calories",
+      "type": "quantitative",
+      "bin": true,
+      "title": "Calories"
+    },
+    "color": {
+      "field": "fat_to_calorie_ratio",
+      "type": "quantitative",
+      "scale": { "scheme": "reds" },
+      "title": "Fat-to-Calorie Ratio"
+    },
+    "tooltip": [
+      { "field": "sugar_g", "type": "quantitative", "title": "Sugar (g)" },
+      { "field": "calories", "type": "quantitative", "title": "Calories" },
+      {
+        "field": "fat_to_calorie_ratio",
+        "type": "quantitative",
+        "title": "Fat-to-Calorie Ratio"
+      }
+    ]
+  }
+}

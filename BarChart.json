@@ -1,0 +1,28 @@
+{
+  "$schema": "https://vega.github.io/schema/vega-lite/v5.json",
+  "description": "Bar chart comparing average nutritional metrics by drink size.",
+  "data": {
+    "url": "starbucks_aggregated_by_size.csv"
+  },
+  "transform": [
+    {
+      "fold": ["calories", "sugar_g", "caffeine_mg"],
+      "as": ["Metric", "Value"]
+    }
+  ],
+  "mark": "bar",
+  "encoding": {
+    "x": { "field": "size", "type": "nominal", "title": "Drink Size" },
+    "y": { "field": "Value", "type": "quantitative", "title": "Average Value" },
+    "color": {
+      "field": "Metric",
+      "type": "nominal",
+      "title": "Nutritional Metric"
+    },
+    "tooltip": [
+      { "field": "size", "type": "nominal" },
+      { "field": "Metric", "type": "nominal" },
+      { "field": "Value", "type": "quantitative" }
+    ]
+  }
+}

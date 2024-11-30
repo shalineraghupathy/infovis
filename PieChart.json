@@ -1,0 +1,32 @@
+{
+  "$schema": "https://vega.github.io/schema/vega-lite/v5.json",
+  "description": "Pie chart showing calorie distribution by milk type.",
+  "data": {
+    "url": "starbucks_aggregated_by_milk.csv"
+  },
+  "mark": { "type": "arc", "innerRadius": 50 },
+  "encoding": {
+    "theta": {
+      "field": "calories",
+      "type": "quantitative",
+      "title": "Calories"
+    },
+    "color": {
+      "field": "milk",
+      "type": "nominal",
+      "title": "Milk Type",
+      "scale": {
+        "domain": [0, 1, 2, 3, 4, 5],
+        "range": ["gray", "blue", "green", "yellow", "orange", "red"]
+      }
+    },
+    "tooltip": [
+      { "field": "milk", "type": "nominal", "title": "Milk Type" },
+      {
+        "field": "calories",
+        "type": "quantitative",
+        "title": "Average Calories"
+      }
+    ]
+  }
+}
