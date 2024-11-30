@@ -40,7 +40,10 @@ for team in teams:
 # Convert the dictionary to a DataFrame for better representation
 team_stats_df = pd.DataFrame.from_dict(team_stats, orient='index')
 
+# Rename the index to 'team'
+team_stats_df.index.name = 'team'
+
 # Save the DataFrame to a CSV file
-team_stats_df.to_csv('team_match_statistics.csv', index=True)
+team_stats_df.to_csv('team_match_statistics.csv')
 
 print("The CSV file has been generated: 'team_match_statistics.csv'")
